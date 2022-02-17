@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
 const countriesRoute = require('./countries'); //
-const activitiesRoute = require('./activities');//
+const activitiesRoute = require('./activities'); //
 const { Activity, Country } = require('../db');
 
 // Importar todos los routers;
@@ -86,7 +86,7 @@ router.post('/activities', async (req, res) => {
 				season     : season
 			}
 		});
-		console.log("created en este punto ", created)
+		console.log('created en este punto ', created);
 
 		if (created) {
 			const activityDb = await Country.findAll({
@@ -105,9 +105,6 @@ router.post('/activities', async (req, res) => {
 		console.log(error);
 	}
 });
-
-
-
 
 router.get('/activities', async (req, res) => {
 	try {
