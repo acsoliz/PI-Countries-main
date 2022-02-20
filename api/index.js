@@ -24,5 +24,15 @@ const { conn } = require('./src/db.js');
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+    // try {
+    //   const apiCountries = await axios.get('https://restcountries.com/v3/all')
+
+    // }catch (error) {
+    //   console.log('Catch error: ', error)
+    // }
+  
+
+
+    
   });
 });

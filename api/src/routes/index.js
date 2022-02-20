@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
-const countriesRoute = require('./countries'); //
-const activitiesRoute = require('./activities'); //
+// const countriesRoute = require('./countries'); //
+// const activitiesRoute = require('./activities'); //
 const { Activity, Country } = require('../db');
 
 // Importar todos los routers;
@@ -9,7 +9,7 @@ const { Activity, Country } = require('../db');
 const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-//es una funcion que va llamar al endpint de la Aip y va traer toda la info
+//es una funcion que va llamar al endpoint de la Aip y va traer toda la info
 const getApiInfo = async () => {
 	const apiUrl = await axios.get('https://restcountries.com/v3/all');
 	// console.log (apiUrl)
@@ -74,51 +74,39 @@ router.get('/countries/:id', async (req, res) => {
 });
 
 router.post('/activities', async (req, res) => {
-	let { name, difficulty, duration, season, countryId } = req.body;
+	const {name, difficulty, duration, season, countries} = req.body;
 
-	try {
-		const [ activity, created ] = await Activity.findOne({
-			where    : { name: name },
-			defaults : {
-				name       : name,
-				difficulty : difficulty,
-				duration   : duration,
-				season     : season
-			}
-		});
-		console.log('created en este punto ', created);
+    const newActivity = await Activity.create({
+        name: name.charAt(0).toUpperCase()+name.slice(1),
+        difficulty,
+        duration,
+        season,
+        countries
+    })
 
-		if (created) {
-			const activityDb = await Country.findAll({
-				where : {
-					id : countryId
-				}
-			});
+    await newActivity.addCountries(countries);
 
-			for (let value of activityDb) {
-				await value.addActivity(activity.dataValues.id); //lleno la tabla intermedia, haciendo la relacion entre la actividad creada y
-			}
-			res.json(activity);
-		}
-		res.send('La actividad ya existe');
-	} catch (error) {
-		console.log(error);
-	}
+    const foundActivity = await Activity.findAll({
+        where:{
+            name: name.toUpperCase()
+        },
+
+        include: [{
+            model: Country,
+            attributes:['name']
+        }] 
+    })
+	console.log(newActivity)
+    return res.status(200).json(foundActivity)
 });
 
 router.get('/activities', async (req, res) => {
-	try {
-		const activities = await Activity.findAll({
-			attributes : [ 'name', 'id' ]
-		});
-		if (activities.length !== 0) {
-			res.json(activities);
-		} else {
-			res.json([ { name: 'There is no activities' } ]);
-		}
-	} catch (error) {
-		res.json(error);
-	}
+  
+    const activitiesCreated = await Activity.findAll({
+        include: Country
+    })
+	console.log(Country)
+    res.status(200).json(activitiesCreated)
 });
 
 module.exports = router;

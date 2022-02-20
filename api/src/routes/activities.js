@@ -1,8 +1,8 @@
 
-const { Router } = require ('express')
-const { addAct } = require()
-const router = Router();
+// const { Router } = require ('express')
+// const { addAct } = require()
+// const router = Router();
 
-router.post('/', addAct)
+// router.post('/', addAct)
 
-module.exports = router
+// module.exports = router
