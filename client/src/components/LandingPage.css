@@ -1,4 +1,4 @@
-* {
+ * {
 	margin: 0 auto;
 	padding: 0 auto;
 	box-sizing: border-box;
@@ -12,24 +12,24 @@ section {
 	background-size: cover;
 }
 
-button {
-	border-radius: 50px;
-	height: 50px;
-	background-color: rgba(11, 22, 19, 0.061);
-	shape-outside: none;
-	margin-top: 50px;
-    font-size: 3rem;
+.buttonp {   
+    text-decoration:none;
 }
 title{
     text-align: center;
 }
-.btn:hover{
+/* .btn:hover{
     cursor:pointer;
     background-color: transparent;
     color:tomato;
     font-size: large;
     margin-top: 1em;
     margin-bottom: 2.5em;
-} 
+}  */
+/* active{
+  
+    text-decoration:none;
+    
+} */
 
-/* footer{} */
+

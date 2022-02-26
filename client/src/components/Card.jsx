@@ -1,24 +1,27 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-//import .css
 
-export default function Card({ name, flag, region, id }) {
-	const dispatch = useDispatch();
-
-	return (
-		<div className="Card">
-			<NavLink
-				to={`/details/${id}`}
-				onClick={() => {
-					dispatch(getDetail(id));
-				}}
-			>
-				<h3 className="title" key={id}>
-					{name}{' '}
-				</h3>
-			</NavLink>
-            <h5>{region}</h5>
+export default function Card({ name, area, flags, id, population, continents }) {
+	return (			
+		<>
+		<div className="card" key={id}>
+			<div className="card-body">
+				<h5 className="card-title">{name}</h5>
+				<img src={flags} alt="countries" width="80" height="80" alt="" />
+				<div className="col-sm-4 col-md-4 col-lg-4">
+					<p>{continents}</p>
+				</div>
+				<div className="row">
+					<div className="col-sm-4 col-md-4 col-lg-4">
+						<p>area:</p>
+						<p>{area}</p>
+					</div>
+					<div className="col-sm-4 col-md-4 col-lg-4">
+						<p>Population:</p>
+						<p>{population}</p>
+					</div>
+				</div>
+			</div>
 		</div>
+		</>
 	);
 }
