@@ -1,21 +1,26 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import s from './Card.module.css'
 
 export default function Card({ name, area, flags, id, population, continents }) {
 	return (			
 		<>
-		<div className="card" key={id}>
-			<div className="card-body">
-				<h5 className="card-title">{name}</h5>
-				<img src={flags} alt="countries" width="80" height="80" alt="" />
-				<div className="col-sm-4 col-md-4 col-lg-4">
+		<div className={s.card} key={id}>
+			<div className={s.cardBody}>
+				<NavLink className = {s.link} to={`/countries/${id}`}>
+					<h5 className={s.cardTitle}>{name}</h5>
+				</NavLink>
+				
+				<img src={flags} className={s.imgFlag} alt="countries" width="140" height="80" alt="" />
+				<div className={s.tittleContinent}>
 					<p>{continents}</p>
 				</div>
-				<div className="row">
-					<div className="col-sm-4 col-md-4 col-lg-4">
-						<p>area:</p>
+				<div className={s.row}>
+					<div className={s.boxes}>
+						<p>Area:</p>
 						<p>{area}</p>
 					</div>
-					<div className="col-sm-4 col-md-4 col-lg-4">
+					<div className={s.boxes}>
 						<p>Population:</p>
 						<p>{population}</p>
 					</div>

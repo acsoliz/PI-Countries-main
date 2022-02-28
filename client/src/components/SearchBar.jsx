@@ -10,7 +10,7 @@ export default function SearchBar() {
 	function handleInputChange(e) {
 		e.preventDefault();
 		setName(e.target.value); //tomo el valor del imput del elemento que disparo el evento
-		console.log(name);
+		//console.log(name);
 	}
 
     function handleSubmit(e){

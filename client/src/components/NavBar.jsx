@@ -21,8 +21,8 @@ export default function NavBar() {
                             </NavLink>
                         </li>
                         <li className={a.li}>
-                            <NavLink className={a.navli} to="/addActivity">
-                                ADD ACTIVITIES
+                            <NavLink className={a.navli} to="/activity">
+                                ACTIVITIES
                             </NavLink>{' '}
                         </li>
                         <li className={a.li}>

@@ -105,3 +105,28 @@ dist
 
 # package-lock.json
 package-lock.json
+bkpclient/BKPSrc/setupTests.js
+*.js
+bkpclient/src/components/FilterContinent.jsx
+bkpclient/src/components/Home.jsx
+bkpclient/src/components/LandingPage.jsx
+bkpclient/src/components/SearchBar.jsx
+bkpclient/src/index.css
+bkpclient/src/index.js
+bkpclient/src/reducer/index.js
+bkpclient/src/reportWebVitals.js
+bkpclient/src/setupTests.js
+bkpclient/src/store/index.js
+*.jsx
+*.js
+*.css
+bkpclient/src/components/FilterContinent.jsx
+bkpclient/src/components/Home.jsx
+bkpclient/src/components/LandingPage.jsx
+bkpclient/src/components/SearchBar.jsx
+bkpclient/src/index.css
+bkpclient/src/index.js
+bkpclient/src/reducer/index.js
+bkpclient/src/reportWebVitals.js
+bkpclient/src/setupTests.js
+bkpclient/src/store/index.js

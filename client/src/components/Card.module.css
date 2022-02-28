@@ -1,21 +1,46 @@
 .card {
-    margin: 20px;
-    width: 18rem;
-  }
-  
-  .card-title {
-    margin-bottom: 15px;
-  }
-  
-  #closeIcon {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 8px;
-    margin-top: 8px;
-  }
-  
-  .card-body {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-  }
-  
+	margin: 10px;
+	width: 15rem;
+	border-style: groove;
+}
+
+.cardTitle {
+	margin-bottom: 15px;
+  text-align: center;
+}
+
+.cardBody {
+	margin-top: 0px !important;
+	padding-top: 0px !important;
+}
+.imgFlag {
+	display: flex;
+	justify-content: center;
+}
+
+.row {
+	display: grid;
+	border-style: groove;
+
+  display: flex;
+  justify-content: space-between space-around;
+}
+.boxes{
+  	display: grid;
+	/* border-style: groove; */
+  column-count: 2;
+
+}
+.tittleContinent{
+	display: grid;
+	border-style: hidden ;
+	margin-block: 3px;;
+}
+.container{
+	display: flex;
+	align-items: center;
+}
+/* display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 10px;
+grid-auto-rows: 100px 200px; */

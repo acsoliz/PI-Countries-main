@@ -2,6 +2,7 @@ const axios = require('axios');
 
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_NAME_COUNTRY = 'GET_NAME_COUNTRY';
+export const GET_DETAIL = 'GET_DETAIL'
 const URL_GET = 'http://localhost:3001/countries';
 const URL_NAME_GET = 'http://localhost:3001/countries?name=';
 
@@ -32,18 +33,13 @@ export function getNameCountries(name) {
 
 export function getDetail(id){
     return async function (dispatch){
+		console.log("Detail en la definicion de la accion")
         try{
-            const json = await axios.get(`http://localhost:3001/countries/${id}`)
-            
-                
-                return dispatch({
+            const json = await axios.get(`http://localhost:3001/countries/${id}`)  
+			        return dispatch({
                     type: 'GET_DETAIL',
                     payload: json.data
-                })
-
-            // })
-        
-           
+                })   
         }catch(e){
             console.log(e)
         }
