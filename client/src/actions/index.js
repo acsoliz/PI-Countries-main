@@ -48,3 +48,6 @@ export function getDetail(id) {
 		}
 	};
 }
+
+
+export function FilterContinent(){}

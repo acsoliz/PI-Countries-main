@@ -8,12 +8,13 @@ import NavBar from './NavBar';
 
 export default function Home() {
 	const allCountries = useSelector((state) => state.countries); // acceso al store, en vez de mapStateToProps. Trae todo en el state de recipes
-	
+	console.log(allCountries, "soy Allconuntreies")
 	//--------------mostrar los paises
 	const dispatch = useDispatch();
 	useEffect(() => {
+		//monto el componente
 		dispatch(getCountries());
-		// dispatch(setCountriesXpage(10))
+		// dispatch(setCountriesXpage(9))
 	}, [dispatch]);
 
 
@@ -24,25 +25,36 @@ export default function Home() {
     // }
 
 	// //--------------paginado
-	// const [currentPage, SetCurrentPage] = useState(1);
-	// const [countriesXpage, setCountriesXpage] = useState(10);
+	const [currentPage, SetCurrentPage] = useState(1);//Pagina actual
+	const [countriesXpage, setCountriesXpage] = useState(9); // Cuantos paises por page
+	console.log(currentPage, countriesXpage, "ESTADOS LOCALES" )
 	
-	// const lastCountry = currentPage * countriesXpage;
-	// const firstCountry = lastCountry - countriesXpage;
-	// let currentCountries = allCountries && allCountries.slice(firstCountry, lastCountry)
-	// let pages= [];
+	const lastCountry = currentPage * countriesXpage;
+	const firstCountry = lastCountry - countriesXpage;
+	const currentCountries = allCountries && allCountries.slice(firstCountry, lastCountry)
+	console.log(allCountries, lastCountry, "Hola soy currentCountries")
+	console.log(currentCountries, "Hola soy currentCountries")
+	
 
-	// const paginated = (pageNum) =>{
-	// 	SetCurrentPage(pageNum)
-	// }
+
+	const paginated = (pageNum) =>{
+		SetCurrentPage(pageNum)
+	}
 
 	return (
 		<>	
 		<div>
 			<div>	
 				<NavBar />	
-				<h1>Home Countries</h1>		
-				<AllCards/>			
+				<h1>Home Countries</h1>
+				<AllCards currentCountries={currentCountries} />
+				<div>
+					<Paginated
+						allCountries={allCountries?allCountries.length:250}
+						countriesXpage={countriesXpage}
+						paginated={paginated}
+					/>
+				</div>				
 			</div>
 		</div>
 		</>

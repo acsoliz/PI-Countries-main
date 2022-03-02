@@ -21,9 +21,9 @@ export default function rootReducer(state = initialState, action) {
 		case GET_DETAIL:
 			return {
 				...state,
-				countries : action.payload,
-				details   : action.payload
+				details   : action.payload				
 			};
+		
 		default:
 			return {
 				state

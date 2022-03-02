@@ -3,30 +3,24 @@ import { useSelector } from 'react-redux';
 import Card from './Card';
 import a from './AllCards.module.css';
 
-//escucho y mapeo el estadode los personajes y por cada uno renderizo una Card
+//escucho y mapeo el estadode countries y por cada uno renderizo una Card
 
-export default function AllCards() {
-	
-	const allCountries = useSelector((state) => state.countries); //array paises
+export default function AllCards({currentCountries}) {
 	return (
 		<>
 		<div className={a.cards}>
-			{console.log(allCountries, "Aqui en All cards")}
-			{allCountries &&
-				allCountries.map((country) => {
-					return (
-						<div key={country.id}>
-							<Card
-								name={country.name}
-								area={country.area}
-								flags={country.flags}
-								id={country.id}
-								population={country.population}
-								continents={country.continents}
-							/>
-						</div>
-					);
-				})}
+					{currentCountries?
+				currentCountries.map((country) => 								
+					<Card
+						key={country.id}
+						name={country.name}
+						area={country.area}
+						flags={country.flags}
+						id={country.id}
+						population={country.population}
+						continents={country.continents}
+					/>	
+				):<h2>LOADING...</h2>}
 		</div>
 		</>
 	);
