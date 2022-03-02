@@ -1,9 +1,11 @@
-import React, {useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import {useParams} from 'react-router'
-import NavBar from './NavBar';
-import s from './Detail.module.css';
+import { NavLink } from 'react-router-dom';
 import { getDetail } from '../actions';
+import React, {useEffect} from 'react'; 
+import {useParams} from 'react-router'
+import s from './Detail.module.css';
+import NavBar from './NavBar';
+
 
 export default function Detail() {
     const dispatch = useDispatch();
@@ -53,6 +55,10 @@ export default function Detail() {
 			</div>
 			):(<span>Country Not Found</span>)
 			}
+			
+			<NavLink to="/home">
+				<button className="butonVolver">Volver</button>
+			</NavLink>
 		 
 		</>
 	);
