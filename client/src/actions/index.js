@@ -5,6 +5,7 @@ export const GET_NAME_COUNTRY = 'GET_NAME_COUNTRY';
 export const GET_DETAIL = 'GET_DETAIL';
 const URL_GET = 'http://localhost:3001/countries';
 const URL_NAME_GET = 'http://localhost:3001/countries?name=';
+export const FILTER_CONTINENT = "FILTER_CONTINENT"
 
 export function getCountries() {
 	return async function(dispatch) {
@@ -35,8 +36,7 @@ export function getNameCountries(name) {
 }
 
 export function getDetail(id) {
-	return async function(dispatch) {
-		console.log('Detail en la definicion de la accion');
+	return async function(dispatch) {		
 		try {
 			const json = await axios.get(`http://localhost:3001/countries/${id}`);
 			return dispatch({
@@ -50,4 +50,9 @@ export function getDetail(id) {
 }
 
 
-export function FilterContinent(){}
+export function filterByContinent(payload){
+	return {
+        type: FILTER_CONTINENT,
+        payload
+    }
+}
