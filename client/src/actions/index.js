@@ -3,6 +3,8 @@ const axios = require('axios');
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_NAME_COUNTRY = 'GET_NAME_COUNTRY';
 export const GET_DETAIL = 'GET_DETAIL';
+export const BUTTON_ORDER_ALPH = 'BUTTON_ORDER_ALPH'
+export const BUTTONS_TO_ORDER_NUM = 'BUTTONS_TO_ORDER_NUM'
 const URL_GET = 'http://localhost:3001/countries';
 const URL_NAME_GET = 'http://localhost:3001/countries?name=';
 export const FILTER_CONTINENT = "FILTER_CONTINENT"
@@ -47,6 +49,14 @@ export function getDetail(id) {
 			console.log(e);
 		}
 	};
+}
+
+
+export function buttonsToOrderNum(payload){
+	return{
+		type: BUTTONS_TO_ORDER_NUM,
+		payload
+	}
 }
 
 

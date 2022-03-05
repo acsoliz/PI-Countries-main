@@ -5,6 +5,7 @@ import FilterContinent from './FilterContinent'
 import Paginated from './Paginated';
 import AllCards from './AllCards';
 import NavBar from './NavBar';
+import { buttonsToOrderNum } from '../actions/index';
 
 
 export default function Home() {
@@ -16,6 +17,16 @@ export default function Home() {
 		dispatch(getCountries());
 		// dispatch(setCountriesXpage(9))
 	}, [dispatch]);
+
+	//----------- Ordenarlos
+	const[orden, setOrden]= useState('')
+
+	function handleFilterByPopulation(e){
+		e.preventDefault();
+		dispatch(buttonsToOrderNum(e.target.value))// DESPACHAR UN BOTONNNN CON EL E.TARGET!!!!
+		setOrden(e.target.value)
+	}
+
 
 
 	//--------------restaurar orden predeterminado de countries
@@ -30,15 +41,16 @@ export default function Home() {
 	const lastCountry = currentPage * countriesXpage;
 	const firstCountry = lastCountry - countriesXpage;
 	const currentCountries = allCountries && allCountries.slice(firstCountry, lastCountry)
-
+	console.log(currentCountries) // array con nueve paises
 	
 	const paginated = (pageNum) =>{
 		setCurrentPage(pageNum)
 	}
+	//--------------
 
 
 
-
+	
 
 	return (
 		<>	
@@ -48,6 +60,16 @@ export default function Home() {
 				<h1>Home Countries</h1>
 				<div>
 					<FilterContinent setCurrentPage={setCurrentPage} />
+				</div>
+				<div className="filterPeople">
+					<div className="filterPeopleLabel">
+						<label>Ordená por cantidad de población</label>
+					</div>
+					<select onChange={(e) => {handleFilterByPopulation(e)}} className="filterPeopleButon">
+						<option>--------------</option>
+						<option value='menos'>Menor cantidad</option>
+						<option value='mas'>Mayor cantidad</option>
+					</select>   
 				</div>
 				<AllCards currentCountries={currentCountries} />
 				<div>
@@ -62,6 +84,6 @@ export default function Home() {
 		</>
 	);
 }
-
+//name*, area*, flag, id
 
 

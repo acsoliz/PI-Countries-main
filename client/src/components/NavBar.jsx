@@ -16,18 +16,26 @@ export default function NavBar() {
                             </NavLink>
                         </li>
                         <li className={a.li}>
-                            <NavLink className={a.navli} to="/home">
-                                HOME
-                            </NavLink>
+                            <div className={a.divHome}>
+                                <NavLink className={a.navli} to="/home">
+                                    HOME
+                                </NavLink>
+                            </div>
+                            
                         </li>
                         <li className={a.li}>
-                            <NavLink className={a.navli} to="/activity">
-                                ACTIVITIES
-                            </NavLink>{' '}
+                            <div className = {a.divSearch}>
+                                <SearchBar/>
+                            </div>
                         </li>
                         <li className={a.li}>
-                            <SearchBar className = {a.search}/>
-                        </li>
+                            <div className={a.divLi}>
+                                <NavLink className={a.navli} to="/activity">
+                                    ACTIVITIES
+                                </NavLink>{' '}
+                            </div>
+                            
+                        </li>                       
                     </ul>
                 </div>
             </nav>

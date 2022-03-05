@@ -8,26 +8,30 @@
 }
 
 .ulStyle {
+/* padding-left:50px; */
 list-style: none;
 margin: 0;
 padding: 0;
 }
 
 .li {
-	display: inline-block;
+	display: inline-grid;
+
 }
 .navli{
   color: white;
-  display:block;
+  display:inline;
   text-decoration: none;
   padding: 20px 60px;
 }
 .navli:hover{
   background-color: #42B881;
 }
-a.search{
-  float: right;
- 
+a.divHome{
+  padding-left: 8rem;
+}
+.divLi{
+ padding-left: 18rem;
 }
 /*   
   .navlia:hover {
